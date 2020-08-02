@@ -14485,35 +14485,35 @@ Elapsed time: 5272.0469 seconds 87.8674 mins
 </div>
 </div>
 
-</div># execute this cell if you need more than 60 epochs.
-num_epochs = 60
-num_epochs_new = 0
-# model_scratch = train(num_epochs, loaders_scratch, model_scratch, optimizer_scratch,
-#                       criterion_scratch, use_cuda, 'model_scratch.pt')
-while True:
-    try:
-        model_scratch.load_state_dict(torch.load('model_scratch.pt'))
-        num_epochs += new_epochs
-        print('Epochs so far {}'.format(num_epochs)
-    except:
-        num_epochs = 0
-        print("No checkpoint, starting from beginning!")
+</div># execute this cell if you need more than 60 epochs.  
+num_epochs = 60  
+num_epochs_new = 0  
+# model_scratch = train(num_epochs, loaders_scratch, model_scratch, optimizer_scratch,  
+#                       criterion_scratch, use_cuda, 'model_scratch.pt')  
+while True:  
+    try:  
+        model_scratch.load_state_dict(torch.load('model_scratch.pt'))  
+        num_epochs += new_epochs  
+        print('Epochs so far {}'.format(num_epochs)  
+    except:  
+        num_epochs = 0  
+        print("No checkpoint, starting from beginning!")  
         
-    print('Epochs so far {}'.format(num_epochs))
-    new_choice = input('Give me more epochs? [0 to exit] > ')
-    try:
-        new_epochs = int(new_choice)
-    except:
-        print('Sorry, this is not a number.')
-        print('Try again with a positive number')
-        continue
+    print('Epochs so far {}'.format(num_epochs))  
+    new_choice = input('Give me more epochs? [0 to exit] > ')  
+    try:  
+        new_epochs = int(new_choice)  
+    except:  
+        print('Sorry, this is not a number.')  
+        print('Try again with a positive number')  
+        continue  
                        
-    if new_epochs <= 0:
-        print('I am exiting....Goodbye!!!')
-        break
+    if new_epochs <= 0:  
+        print('I am exiting....Goodbye!!!')  
+        break  
               
-    model_scratch = train(new_epochs, loaders_scratch, model_scratch, optimizer_scratch,
-                      criterion_scratch, use_cuda, 'model_scratch.pt')
+    model_scratch = train(new_epochs, loaders_scratch, model_scratch, optimizer_scratch,  
+                      criterion_scratch, use_cuda, 'model_scratch.pt')  
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15028,272 +15028,129 @@ Elapsed time: 19.0569 seconds 0.3176 mins
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="INCEPTION-V3-test">INCEPTION V3 test<a class="anchor-link" href="#INCEPTION-V3-test">&#182;</a></h1><h3 id="TEST-with-10-EPOCHS">TEST with 10 EPOCHS<a class="anchor-link" href="#TEST-with-10-EPOCHS">&#182;</a></h3><p>Training Loss: 5.854132     Validation Loss: 3.956597<br>
-Elapsed time: 1963.2145 seconds 32.7202 mins</p>
-<p>Test Accuracy: 52% (443/836)<br>
-Elapsed time: 22.6898 seconds 0.3782 mins</p>
+</div># INCEPTION V3 test
+### TEST with 10 EPOCHS
+	
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="INCEPTION-V3-test">INCEPTION V3 test<a class="anchor-link" href="#INCEPTION-V3-test">&#182;</a></h2><h2 id="TODO:-Specify-model-architecture">TODO: Specify model architecture<a class="anchor-link" href="#TODO:-Specify-model-architecture">&#182;</a></h2><p>data_train, train_loader, val_loader, test_loader = transform_and_load(299)
-loaders_transfer = {
-    'train': train_loader,
-    'validation': val_loader,
-    'test': test_loader
-}</p>
-<p>model_transfer = models.inception_v3(pretrained=True)</p>
-<p>for param in model_transfer.parameters():
-    param.requires_grad = False</p>
-<p>n_aux_input = model_transfer.AuxLogits.fc.in_features
-n_input = model_transfer.fc.in_features</p>
-<p>aux_layer = nn.Linear(n_aux_input, 133)
-last_layer = nn.Linear(n_input, 133)</p>
-<p>model_transfer.AuxLogits.fc = aux_layer
-model_transfer.fc = last_layer</p>
-<p>print(model_transfer)</p>
-<p>if use_cuda:
-    model_transfer = model_transfer.cuda()</p>
-<p>model_params_to_update = params_to_update(model_transfer)</p>
+Training Loss: 5.854132 	Validation Loss: 3.956597  
+Elapsed time: 1963.2145 seconds 32.7202 mins
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>criterion_transfer = nn.CrossEntropyLoss()
-optimizer_transfer = optim.SGD(model_params_to_update, lr=0.001)</p>
+Test Accuracy: 52% (443/836)  
+Elapsed time: 22.6898 seconds 0.3782 mins## INCEPTION V3 test
+## TODO: Specify model architecture 
+data_train, train_loader, val_loader, test_loader = transform_and_load(299)  
+loaders_transfer = {  
+    'train': train_loader,  
+    'validation': val_loader,  
+    'test': test_loader  
+}  
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>print(loaders_transfer['train'])</p>
+model_transfer = models.inception_v3(pretrained=True)
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="train-the-model">train the model<a class="anchor-link" href="#train-the-model">&#182;</a></h1><p>n_epochs = 10
+for param in model_transfer.parameters():
+    param.requires_grad = False
+
+n_aux_input = model_transfer.AuxLogits.fc.in_features
+n_input = model_transfer.fc.in_features
+
+aux_layer = nn.Linear(n_aux_input, 133)
+last_layer = nn.Linear(n_input, 133)
+
+
+model_transfer.AuxLogits.fc = aux_layer
+model_transfer.fc = last_layer
+
+print(model_transfer)
+
+if use_cuda:
+    model_transfer = model_transfer.cuda()
+    
+model_params_to_update = params_to_update(model_transfer)# DENSENET121 test
+### TEST with 10 EPOCHS 	
+
+Training Loss: 3.519136 	Validation Loss: 3.152614  
+Elapsed time: 1297.5972 seconds 21.6266 mins
+
+Test Accuracy: 51% (428/836)  
+Elapsed time: 17.6422 seconds 0.2940 minsmodel_transfer = models.densenet121(pretrained=True)  
+print(model_transfer)## DenseNet121 test
+## TODO: Specify model architecture 
+
+model_transfer = models.densenet121(pretrained=True)
+
+for param in model_transfer.features.parameters():
+    param.requires_grad = False
+
+n_input = model_transfer.classifier.in_features
+
+last_layer = nn.Linear(n_input, 133)
+
+model_transfer.classifier = last_layer
+
+print(model_transfer)
+
+if use_cuda:
+    model_transfer = model_transfer.cuda()
+    
+model_params_to_update = params_to_update(model_transfer)
+
+# RESNET50
+### TEST with 10 EPOCHS
+
+Training Loss: 3.569588 	Validation Loss: 3.075027   
+Elapsed time: 883.2955 seconds 14.7216 mins
+
+Test Accuracy: 57% (480/836)  
+Elapsed time: 16.2598 seconds 0.2710 mins## TODO: Specify model architecture 
+
+model_transfer = models.resnet50(pretrained=True)
+
+for param in model_transfer.parameters():
+    param.requires_grad = False
+
+n_input = model_transfer.fc.in_features
+
+last_layer = nn.Linear(n_input, 133)
+
+model_transfer.fc = last_layer
+
+print(model_transfer)
+
+model_params_to_update = params_to_update(model_transfer)
+
+if use_cuda:
+    model_transfer = model_transfer.cuda()
+
+criterion_transfer = nn.CrossEntropyLoss()  
+optimizer_transfer = optim.SGD(model_params_to_update, lr=0.001)# train the model
+n_epochs = 10  
+# not for inception v3
+model_transfer = train(n_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt') 
+# or for inception v3 
 model_transfer = train(n_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt', is_inception=True)
-print('===============')
-print('Epochs so far {}'.format(n_epochs))
-print('===============')
+print('===============')  
+print('Epochs so far {}'.format(n_epochs))  
+print('===============')  
 while True:
-    new_choice = input('Give me more epochs? [0 to exit] &gt; ')
+    new_choice = input('Give me more epochs? [0 to exit] > ')
     try:
         new_epochs = int(new_choice)
         n_epochs += new_epochs
     except:
         print('This was not a number. Sorry, all ends here!')
-        new_epochs = -1</p>
-
-<pre><code>if new_epochs &lt;= 0:
-    print('I am exiting....Goodbye!!!')
+        new_epochs = -1
+                       
+    if new_epochs <= 0:
+        print('I am exiting....Goodbye!!!')
+        print('===============')
+        print('Epochs so far {}'.format(n_epochs))
+        print('===============')
+        break
+    model_transfer.load_state_dict(torch.load('model_transfer.pt'))
+    model_transfer = train(new_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt')
     print('===============')
     print('Epochs so far {}'.format(n_epochs))
-    print('===============')
-    break
-model_transfer.load_state_dict(torch.load('model_transfer.pt'))
-model_transfer = train(new_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt')
-print('===============')
-print('Epochs so far {}'.format(n_epochs))
-print('===============')</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>model_transfer.load_state_dict(torch.load('model_transfer.pt'))<br>
-test(loaders_transfer, model_transfer, criterion_transfer, use_cuda, is_inception=True)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="DENSENET121-test">DENSENET121 test<a class="anchor-link" href="#DENSENET121-test">&#182;</a></h1><h3 id="TEST-with-10-EPOCHS">TEST with 10 EPOCHS<a class="anchor-link" href="#TEST-with-10-EPOCHS">&#182;</a></h3><p>Training Loss: 3.519136     Validation Loss: 3.152614<br>
-Elapsed time: 1297.5972 seconds 21.6266 mins</p>
-<p>Test Accuracy: 51% (428/836)<br>
-Elapsed time: 17.6422 seconds 0.2940 mins</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>model_transfer = models.densenet121(pretrained=True)
-print(model_transfer)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="INCEPTION-V3-test">INCEPTION V3 test<a class="anchor-link" href="#INCEPTION-V3-test">&#182;</a></h2><h2 id="TODO:-Specify-model-architecture">TODO: Specify model architecture<a class="anchor-link" href="#TODO:-Specify-model-architecture">&#182;</a></h2><p>data_train, train_loader, val_loader, test_loader = transform_and_load(224)
-loaders_transfer = {
-    'train': train_loader,
-    'validation': val_loader,
-    'test': test_loader
-}</p>
-<p>model_transfer = models.densenet121(pretrained=True)</p>
-<p>for param in model_transfer.features.parameters():
-    param.requires_grad = False</p>
-<p>n_input = model_transfer.classifier.in_features</p>
-<p>last_layer = nn.Linear(n_input, 133)</p>
-<p>model_transfer.classifier = last_layer</p>
-<p>print(model_transfer)</p>
-<p>if use_cuda:
-    model_transfer = model_transfer.cuda()</p>
-<p>model_params_to_update = params_to_update(model_transfer)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>criterion_transfer = nn.CrossEntropyLoss()
-optimizer_transfer = optim.SGD(model_params_to_update, lr=0.001)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="train-the-model">train the model<a class="anchor-link" href="#train-the-model">&#182;</a></h1><p>n_epochs = 10
-model_transfer = train(n_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt')
-print('===============')
-print('Epochs so far {}'.format(n_epochs))
-print('===============')
-while True:
-    new_choice = input('Give me more epochs? [0 to exit] &gt; ')
-    try:
-        new_epochs = int(new_choice)
-        n_epochs += new_epochs
-    except:
-        print('This was not a number. Sorry, all ends here!')
-        new_epochs = -1</p>
-
-<pre><code>if new_epochs &lt;= 0:
-    print('I am exiting....Goodbye!!!')
-    print('===============')
-    print('Epochs so far {}'.format(n_epochs))
-    print('===============')
-    break
-model_transfer.load_state_dict(torch.load('model_transfer.pt'))
-model_transfer = train(new_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt')
-print('===============')
-print('Epochs so far {}'.format(n_epochs))
-print('===============')</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>model_transfer.load_state_dict(torch.load('model_transfer.pt'))<br>
-test(loaders_transfer, model_transfer, criterion_transfer, use_cuda)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="RESNET50">RESNET50<a class="anchor-link" href="#RESNET50">&#182;</a></h1><h3 id="TEST-with-10-EPOCHS">TEST with 10 EPOCHS<a class="anchor-link" href="#TEST-with-10-EPOCHS">&#182;</a></h3><p>Training Loss: 3.569588     Validation Loss: 3.075027<br>
-Elapsed time: 883.2955 seconds 14.7216 mins</p>
-<p>Test Accuracy: 57% (480/836)<br>
-Elapsed time: 16.2598 seconds 0.2710 mins</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TODO:-Specify-model-architecture">TODO: Specify model architecture<a class="anchor-link" href="#TODO:-Specify-model-architecture">&#182;</a></h2><p>model_transfer = models.resnet50(pretrained=True)</p>
-<p>for param in model_transfer.parameters():
-    param.requires_grad = False</p>
-<p>n_input = model_transfer.fc.in_features</p>
-<p>last_layer = nn.Linear(n_input, 133)</p>
-<p>model_transfer.fc = last_layer</p>
-<p>print(model_transfer)</p>
-<p>model_params_to_update = params_to_update(model_transfer)</p>
-<p>if use_cuda:
-    model_transfer = model_transfer.cuda()</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>criterion_transfer = nn.CrossEntropyLoss()
-optimizer_transfer = optim.SGD(model_params_to_update, lr=0.001)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="train-the-model">train the model<a class="anchor-link" href="#train-the-model">&#182;</a></h1><p>n_epochs = 10
-model_transfer = train(n_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt')
-print('===============')
-print('Epochs so far {}'.format(n_epochs))
-print('===============')
-while True:
-    new_choice = input('Give me more epochs? [0 to exit] &gt; ')
-    try:
-        new_epochs = int(new_choice)
-        n_epochs += new_epochs
-    except:
-        print('This was not a number. Sorry, all ends here!')
-        new_epochs = -1</p>
-
-<pre><code>if new_epochs &lt;= 0:
-    print('I am exiting....Goodbye!!!')
-    print('===============')
-    print('Epochs so far {}'.format(n_epochs))
-    print('===============')
-    break
-model_transfer.load_state_dict(torch.load('model_transfer.pt'))
-model_transfer = train(new_epochs, loaders_transfer, model_transfer, optimizer_transfer, criterion_transfer, use_cuda, 'model_transfer.pt')
-print('===============')
-print('Epochs so far {}'.format(n_epochs))
-print('===============')</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>test(loaders_transfer, model_transfer, criterion_transfer, use_cuda)</p>
-
-</div>
-</div>
-</div>
+    print('===============')test(loaders_transfer, model_transfer, criterion_transfer, use_cuda)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
