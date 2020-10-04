@@ -13017,64 +13017,6 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
-<style type="text/css">
-    
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
-    </style>
-<style type="text/css">
-    body[data-notebook-name] > #header #header-container:not(.show-panel), /* body has data-notebook-name attribute when 
-a notebook is open. this rule won't be applied when the notebook is not open (in 404 view for example) */
-body[data-notebook-name] #menubar-container #maintoolbar:not(.show-panel),
-body[data-notebook-name] #menubar-container ul.navbar-nav:not(.show-panel) {
-  display: none;
-}
-
-#menubar.only-panel #menus.navbar-default {
-    background: #fff;
-    border-color: #fff;
-}
-
-.toolbar.with-statusbar{
-    margin-top: 3px;
-    margin-bottom: 0;
-}
-
-    </style>
 
 
 <style type="text/css">
@@ -13108,7 +13050,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13170,7 +13112,7 @@ div#notebook {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To keep running on the workspace beyond the 30mins standard wakeup</span>
 <span class="kn">import</span> <span class="nn">signal</span>
 
-<span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
 
@@ -13276,9 +13218,9 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># necessary imports</span>
 <span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">torchvision</span> <span class="k">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="k">import</span> <span class="n">DataLoader</span>
-<span class="kn">from</span> <span class="nn">torchvision</span> <span class="k">import</span> <span class="n">transforms</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span>
 </pre></div>
 
     </div>
@@ -13627,7 +13569,7 @@ Max:  tensor(0.9608)
 <span class="sd">    class for the Discriminator part of the DCGAN</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conv_dim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conv_dim</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the Discriminator Module</span>
 <span class="sd">        :param conv_dim: The depth of the first convolutional layer</span>
@@ -13815,7 +13757,7 @@ tests.test_discriminator(Discriminator)</code></pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Generator with 3 transconv layers</span>
 <span class="k">class</span> <span class="nc">Generator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z_size</span><span class="p">,</span> <span class="n">conv_dim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z_size</span><span class="p">,</span> <span class="n">conv_dim</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the Generator Module</span>
 <span class="sd">        :param z_size: The length of the input latent vector, z</span>
@@ -14447,7 +14389,7 @@ Generator(
         <span class="c1"># uncomment these lines, if you want to save your model</span>
         <span class="n">checkpoint_every</span><span class="o">=</span><span class="mi">10</span>
         <span class="c1"># Save the model parameters</span>
-        <span class="n">name_file</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;train_samples_{iteration+epoch+1}_</span><span class="si">{part_name_file}</span><span class="s2">&quot;</span>
+        <span class="n">name_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;train_samples_</span><span class="si">{</span><span class="n">iteration</span><span class="o">+</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">part_name_file</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="n">checkpoint_every</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">checkpoint</span><span class="p">(</span><span class="n">name_file</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">g_optimizer</span><span class="p">,</span> <span class="n">d_optimizer</span><span class="p">,</span> <span class="n">hyper</span><span class="p">,</span> <span class="n">losses</span><span class="p">)</span>
     
@@ -14461,7 +14403,7 @@ Generator(
     <span class="c1"># timing</span>
     <span class="n">toc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
     <span class="n">passed_time</span> <span class="o">=</span> <span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;epoch: </span><span class="si">{epoch}</span><span class="s2"> in </span><span class="si">{passed_time:0.4f}</span><span class="s2"> seconds ({passed_time/60.:0.4f} mins)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="n">passed_time</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> seconds (</span><span class="si">{</span><span class="n">passed_time</span><span class="o">/</span><span class="mf">60.</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> mins)&quot;</span><span class="p">)</span>
     
     
     <span class="c1"># finally return losses</span>
@@ -14612,7 +14554,7 @@ Generator(
 <span class="c1">#             print(f&quot;Is it here?: {list_dict} at index: {index}&quot;)</span>
             <span class="k">if</span> <span class="n">list_dict</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">id_string1</span><span class="p">:</span>
                 
-                <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Found datat id in the file, at index </span><span class="si">{index}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found datat id in the file, at index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I modify the data at that index with the update ones&quot;</span><span class="p">)</span>
 <span class="c1">#                 input(&#39;I am in the right place?: press return&#39;)</span>
                 <span class="n">dcgan_losses</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_dict</span>
@@ -14665,7 +14607,7 @@ Generator(
 <span class="k">if</span> <span class="n">restart_run</span><span class="p">:</span>
     <span class="n">name_file</span><span class="o">=</span><span class="s1">&#39;model_train_samples_35_128_64_0.0002_0.5_3.pkl&#39;</span>
     <span class="n">G</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">g_optimizer_param</span><span class="p">,</span> <span class="n">d_optimizer_param</span><span class="p">,</span> <span class="n">hyper</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">load_checkpoint</span><span class="p">(</span><span class="n">name_file</span><span class="p">,</span> <span class="n">checkpoint_dir</span><span class="o">=</span><span class="s1">&#39;checkpoints_dcgan&#39;</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">hyper</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;data retrieved {hyper(0)} and batch_size </span><span class="si">{batch_size}</span><span class="s2"> differ&quot;</span>
+    <span class="k">assert</span> <span class="n">hyper</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">batch_size</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;data retrieved </span><span class="si">{</span><span class="n">hyper</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2"> and batch_size </span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2"> differ&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model state loaded&quot;</span><span class="p">)</span>
     <span class="nb">input</span> <span class="p">(</span><span class="s1">&#39;Is it ok to continue?&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
@@ -14680,7 +14622,7 @@ Generator(
 <span class="n">conv_deep</span> <span class="o">=</span> <span class="mi">3</span>
 
 <span class="c1">## create a string from the hyperparams</span>
-<span class="n">id_string1</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{batch_size}</span><span class="s2">_</span><span class="si">{img_size}</span><span class="s2">_</span><span class="si">{d_conv_dim}</span><span class="s2">_</span><span class="si">{z_size}</span><span class="s2">_</span><span class="si">{lr}</span><span class="s2">_</span><span class="si">{beta1}</span><span class="s2">_</span><span class="si">{beta2}</span><span class="s2">_</span><span class="si">{conv_deep}</span><span class="s2">&quot;</span>
+<span class="n">id_string1</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">img_size</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">d_conv_dim</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">z_size</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">lr</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">beta1</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">beta2</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">conv_deep</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">id_string1</span><span class="p">)</span>
 
@@ -14698,7 +14640,7 @@ Generator(
     <span class="n">losses</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="n">start_epoch</span><span class="p">,</span> <span class="n">conv_deep</span><span class="o">=</span><span class="n">conv_deep</span><span class="p">,</span> <span class="n">print_every</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
 <span class="c1">### further string to be created with the stra and end number of epochs done in the run</span>
-<span class="n">id_string2</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{start_epoch}</span><span class="s2">_{start_epoch+n_epochs}&quot;</span>
+<span class="n">id_string2</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">start_epoch</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">start_epoch</span><span class="o">+</span><span class="n">n_epochs</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="c1">### save to file the data such as dict of hyperparams and losses</span>
 <span class="c1">### calls &#39;save_losses_data&#39; function</span>
@@ -16482,6 +16424,7 @@ I modify the data at that index with the update ones
 <li>number of epochs: <strong>100</strong></li>
 </ul>
 <p>For the figures please refer above sections: <strong>Training loss</strong> and <strong>Generator samples from training</strong></p>
+<p>The model can be improved by allowing more time to run a bigger number of epochs with a more deepr copnvoluitional network (4 layers for examples) and by teaking advantage of the full 64x64 resolution size of the real input photos.</p>
 
 </div>
 </div>
