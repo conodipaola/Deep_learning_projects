@@ -14699,10 +14699,11 @@ Billable seconds: 1462
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="Answer:"><strong>Answer:</strong><a class="anchor-link" href="#Answer:">&#182;</a></h6><p>Compared to XGBoost with tuned parameter accuracy ~87%, RNN with one hidden layer of LSTM cells seems to have a bit lower performance, with accuracy of ~86%.</p>
+<h6 id="Answer:"><strong>Answer:</strong><a class="anchor-link" href="#Answer:">&#182;</a></h6><p>Compared to XGBoost with tuned parameter accuracy ~87%, RNN with one hidden layer of LSTM cells seems to have a bit lower performance, with accuracy of 84-85%.</p>
 <p>This RNN-LSTM model has: batch_size = 128, embedding_dim 200, hidden_dim 300, vocab_size 5000</p>
 <p>Number of hidden layers: 2 and a dropout=0.5 between hidden layers</p>
-<p>It is true that, after pre-processing the text from Imdb reviews, we have a better converted structured/tabular data where XGBoost perfoms smoothly, but it has been demonstrated that RNN-LSTM with a better hyperparameters tuning can greatly increase its performance. Much more because RNN-LSTM is capable to learn the words context in the text.</p>
+<p>Better accuracy: 85-86%</p>
+<p>It is true that, after pre-processing the text from Imdb reviews, we have a better converted structured/tabular data where XGBoost perfoms smoothly, but it has been demonstrated that RNN-LSTM with a better hyperparameters tuning can greatly increase its performance. Much more because RNN-LSTM is capable of learning the words context in the text.</p>
 <p>So, a better tuning is required in this case, but I find this initial set of hyperparams a good starting point</p>
 
 </div>
